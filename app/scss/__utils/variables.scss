@@ -1,0 +1,87 @@
+
+//== Colors
+
+	$brand-primary   : #C0392B;
+	$brand-secondary : #EF6E5A;
+
+	$brand-success   : #58E2C6;
+	$brand-info      : #03a9f4;
+	$brand-warning   : #FBE21C;
+	$brand-danger    : #d9534f;
+
+
+//== Typography	
+
+	$font-family-pri  : "Avenir Next", 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif; // Primary font.
+	$font-family-base : $font-family-pri;
+
+	//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+	$font-family-monospace : Menlo, Monaco, Consolas, "Courier New", monospace;
+
+	$font-size-base  : 16px;
+	$font-size-small : ceil(($font-size-base * 0.85)); // ~13.6px
+	$font-size-large : ceil(($font-size-base * 1.25)); // ~17.5px
+
+	$font-size-h1 : ceil(($font-size-base * 2.6)); // ~36px
+	$font-size-h2 : ceil(($font-size-base * 2.19)); // ~30px
+	$font-size-h3 : ceil(($font-size-base * 1.7)); // ~24px
+	$font-size-h4 : ceil(($font-size-base * 1.25)); // ~18px
+	$font-size-h5 : $font-size-base;
+	$font-size-h6 : ceil(($font-size-base * 0.85)); // ~12px
+
+
+//== Iconography
+
+	// Path to icon-font(s).
+	$icon-font-path   : "../fonts/";
+
+	// Primary icon-font.
+	$icon-font-name   : "";
+	$icon-font-svg-id : "";
+
+
+//== Breakpoints
+
+	//** Extra small bp / phone
+	$bp-xsmall     : 480px;
+	$bp-xsmall-min : $bp-xsmall;
+	$bp-phone      : $bp-xsmall-min;
+
+	//** Small bp / phone / tablet(potrait)
+	$bp-small     : 600px;
+	$bp-small-min : $bp-small;
+	$bp-tablet    : $bp-small-min;
+
+	//** Medium bp / tablet(potrait) / desktop
+	$bp-medium     : 768px;
+	$bp-medium-min : $bp-medium;
+	$bp-desktop    : $bp-medium-min;
+
+	//** Large bp / wide desktop
+	$bp-large         : 1340px;
+	$bp-large-min     : $bp-large;
+	$bp-large-desktop : $bp-large-min;
+
+	//** So media queries don't overlap when required, provide a maximum
+	$bp-xsmall-max : ($bp-small-min - 1);
+	$bp-small-max  : ($bp-medium-min - 1);
+	$bp-medium-max : ($bp-large-min - 1);
+
+
+//== Material Keylines
+
+	$global-padding : 16px !default;
+	$global-spacer  : $global-padding / 2;
+
+	$app-bar-mobile--height : 56px !default;
+	$app-bar-tablet--height : $app-bar-mobile--height + $global-spacer !default;
+
+	$icon-touch-target : $app-bar-mobile--height - $global-spacer;
+	$icon-size         : $icon-touch-target / 2;
+
+
+//== Material Motion
+
+	$cb-ease-in     : cubic-bezier(0.4, 0.0, 1, 1) !default; // for objects leaving the screen.
+	$cb-ease-out    : cubic-bezier(0.0, 0.0, 0.2, 1) !default; // for objects entering the screen.
+	$cb-ease-in-out : cubic-bezier(0.4, 0.0, 0.2, 1) !default;

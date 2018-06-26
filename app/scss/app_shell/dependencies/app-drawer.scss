@@ -1,0 +1,102 @@
+@import "../__utils/variables";
+@import "../__utils/mixins";
+
+$app-drawer--width     : 320px - $app-bar-mobile--height;
+$app-nd-header--height : $app-drawer--width / (16/9);
+
+.app-drawer {
+	position       : fixed;
+	top            : 0;
+	left           : 0;
+	@include square(100%);
+	overflow       : hidden;
+	pointer-events : none;
+	z-index        : 6;
+
+	&::before {
+		content     : '';
+		display     : block;
+		position    : absolute;
+		top         : 0;
+		left        : 0;
+		@include square(100%);
+		background  : rgba(#000, 0.4);
+		opacity     : 0;
+		will-change : opacity;
+		transition  : opacity 0.4s $cb-ease-in-out;
+	}
+
+	&--visible {
+		pointer-events : auto;
+
+		&::before {
+			opacity : 1;
+		}
+
+		.app-drawer--container {
+			transform : none;
+		}
+	}
+}
+	
+	.app-drawer--container {
+		display        : flex;
+		flex-direction : column;
+		position       : relative;
+		@include size($app-drawer--width,100%);
+		background     : #fafafa;
+		box-shadow     : 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
+		transform      : translateX(-102%);
+		transition     : transform 0.2s $cb-ease-in-out;
+		will-change    : transform;
+	}
+
+	.and-header {
+		position   : absolute;
+		top        : 0;
+		left       : 0;
+		@include size(100%,$app-nd-header--height);
+		background : $brand-primary;
+	}
+
+	.and-inner {
+		position                   : absolute;
+		@include t-b($app-nd-header--height,0);
+		width                      : 100%;
+		padding                    : $global-spacer 0;
+		overflow-y                 : auto;
+		-webkit-overflow-scrolling : touch;
+		transform                  : translateZ(0);
+		will-change                : transform;
+
+		dt {
+			list-style  : none;
+			display     : block;
+			position    : relative;
+			@include size(100%, auto);
+			margin-top  : 0;
+			padding     : 15px 0 15px 22px;
+			@include font-size(13px);
+			font-weight : 700;
+			color       : #333;
+			cursor      : pointer;
+			z-index     : 1;
+
+			&.is-active {
+				background : rgba(#000, .125);
+			}
+
+			&.dropnav {
+				&:after {
+					position    : absolute;
+					right       : $global-spacer;
+					bottom      : $global-spacer / 2;
+					@include size(34px,$icon-touch-target);
+					background  : rgba(#000, 0.15);
+					line-height : $icon-touch-target;
+					text-align  : center;
+					cursor      : pointer;
+				}
+			}
+		}
+	}

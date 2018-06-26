@@ -1,0 +1,13 @@
+.card {
+	display : block;
+	position: relative;
+	@include size(100vw,100vh);
+
+	&-inner {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+	}
+}

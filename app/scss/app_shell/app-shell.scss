@@ -1,0 +1,153 @@
+@import "../__utils/variables";
+@import "../__utils/mixins";
+
+html, body {
+	position       : relative;
+	margin         : 0;
+	padding        : 0;
+	height         : 100%;
+	letter-spacing : normal;
+	@include font($font-family-base,$font-size-base);
+	@include font-smoothing;	
+	background     : #fafafa;
+	overflow       : hidden;
+}
+
+.app-header {
+	display    : block;
+	position   : fixed;
+	top        : 0;
+	left       : 0;
+	@include size(100%,$app-bar-mobile--height);
+	background : $brand-primary;
+	box-shadow : 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
+	z-index    : 5;
+}
+
+.app-bar {
+	display   : block;
+	position  : relative;
+	@include square(100%);
+	max-width : $bp-large;
+	margin    : 0 auto;	
+}
+
+	.standalone-app {
+		.app-header {
+			top : 20px;
+		}
+	}
+
+	.app-bar--nav {
+		position    : absolute;
+		top         : $global-spacer / 2 - 1;
+		left        : $global-spacer / 2;
+		@include square($icon-touch-target);
+		cursor      : pointer;
+		line-height : $icon-touch-target;
+		text-align  : center;	
+
+		svg {
+			vertical-align : middle;
+			@include square($icon-size);
+			fill           : #fff;
+		}
+	}
+
+	.app-bar--title {
+		position       : absolute;
+		@include font-size(12px);
+		// @include text-upper;
+		letter-spacing : 1px;
+		font-weight    : 700;
+		color          : #fff;
+		padding-top    : 1px;
+		left           : $app-bar-mobile--height + $global-padding;
+		right          : 38px;
+		line-height    : $app-bar-mobile--height;
+		overflow       : hidden;
+		white-space    : nowrap;
+		@include truncate;
+
+		.ab-title--section {
+			display      : none;
+			position     : relative;
+			margin-right : 20px;
+			color        : rgba(#fff,.5);
+
+			&:after {
+				position   : absolute;
+				content    : '';
+				top        : 35%;
+				right      : -12px;
+				@include size(2px,30%);
+				background : rgba(#fff,.5);
+			}
+		}
+	}
+
+.app-content {
+	display: block;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	z-index: 0;
+
+	&--inner {
+		position: absolute;
+		width: 100%;
+		@include t-b($app-bar-mobile--height,0);
+		padding: 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		@include scrollbar(0,#fff,#1f1f1f);
+		will-change: transform;
+		transform: translateZ(0);
+	}
+}
+
+	.standalone-app {
+		.app-content--inner {
+			top: $app-bar-mobile--height + 20;
+		}
+	}	
+
+@include breakpoint(600px) {
+	.app-bar {
+		.app-bar--title {
+			.ab-title--section {
+				display : inline-block;
+			}
+		}
+	}
+}
+
+@include breakpoint($bp-tablet) {
+	.app-header {
+		height : $app-bar-tablet--height;
+	}
+
+		.app-bar--nav {
+			top : $global-spacer - 1;
+		}
+
+		.app-bar--title {
+			left        : $app-bar-tablet--height + $global-padding;
+			line-height : $app-bar-tablet--height;
+
+			.ab-title--section {
+				&:after {
+					top    : 39%;
+					height : 22%;
+				}				
+			}
+		}
+
+	.app-content--inner {
+		top: $app-bar-tablet--height;
+	}	
+}
+
+@import "dependencies/app-drawer";

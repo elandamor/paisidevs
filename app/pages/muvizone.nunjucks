@@ -1,0 +1,195 @@
+{% extends "base.nunjucks" %}
+
+{% block title %}paisidevs Concepts | MuviZone{% endblock %}
+
+{% set page_id = "muvizone-app" %}
+{% set app_build = page_id %}
+{% set ab_title__chapter = "MuviZone" %}
+
+{% block app_bar__nav_hor %}
+	<div class="auth-container">
+		<div class="card-info">
+		    <span class="card-info-item card-info--name">VIVEK V.</span>
+		</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<section class="l-movie-art">
+	{% for movie in movies %}
+		<span class="c-card c-card-art" style="background-image:url('/images/movie/art/{{movie.background}}')"></span>
+	{% endfor %}
+	</section>
+
+	<ul class="l-movies-list">
+	{% for movie in movies %}
+		<li class="c-card c-card-movie">
+			<div class="c-card__body">
+				<img src="/images/movie/poster/poster-{{movie.background}}" alt="movie-art" class="c-card-poster l-dv--trigger">
+				<div class="c-card c-card-metadata">
+					<div class="c-metadata__header">
+						<h1 class="c-title l-dv--trigger">{{movie.title}}</h1>
+						<div class="l-meta-block">
+							<span class="meta-rating rated-{{movie.content_rating}}">{{movie.content_rating}}</span>
+							{% set runtime = movie.runtime.split('h') %}
+							{% set hours = runtime[0]|int %}
+							{% set secs  = runtime[1]|replace('m','')|int %}
+							<span class="meta-runtime"><a class="runtime">{{ (hours * 60) + secs}} min</a></span>
+							<span class="meta-genre genre-holder">
+								{% set tags = movie['genre'].split(',') %}
+			            		{% for tag in tags %}
+				            		<a class="genre">{{tag}}</a>
+			            		{% endfor %}
+							</span>
+						</div>
+					</div>
+					<div class="c-metadata__body">
+						<h4 class="c-label">Director</h4>
+						<div class="c-holder">
+						{% if movie['director'].split(',') %}
+				            {% set tags = movie['director'].split(',') %}
+							{% for tag in tags %}
+			            	<a class="director">{{tag}}</a>{%- if not loop.last %}<i class="sep"> • </i>{% endif %}
+			            	{% endfor %}
+			            {% endif %}
+						</div>
+						<h4 class="c-label">Writer</h4>
+						<div class="c-holder">
+						{% if movie['writer'].split(',') %}
+				            {% set tags = movie['writer'].split(',') %}
+							{% for tag in tags %}
+			            	<a class="writer">{{tag}}</a>{%- if not loop.last %}<i class="sep"> • </i>{% endif %}
+			            	{% endfor %}
+			            {% endif %}
+						</div>
+						<h4 class="c-label">Cast</h4>
+						<div class="c-holder">
+						{% set tags = movie['cast'].split(',') %}
+		        		{% for tag in tags %}
+		            		<a class="genre-tag">{{tag}}</a>{%- if not loop.last %}<i class="sep"> • </i>{% endif %}
+		        		{% endfor %}
+						</div>
+						<div class="c-holder row-4">{{movie.summary|truncate(500, 'True')}}</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	{% endfor %}	
+	</ul>
+
+	<nav class="glob-nav nav-dots">
+	{% for movie in movies %}
+		<li class="dot">{{loop.index}}</li>
+	{% endfor %}	
+	</nav>
+	<nav class="glob-nav nav-arrows">
+		<i class="arrow arrow-up">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+		</i>
+		<i class="arrow arrow-down">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>
+		</i>
+	</nav>
+
+	<div class="l-dv-underlay"></div>
+
+	<section class="l-dv">
+		<div class="l-dv-inner">
+			<aside class="l-dv-sidebar l-dv-sidebar__L">
+				<nav class="actions">
+					<ul>
+						<li data-icon=""><a href="#">Watch Trailer</a></li>
+						<li data-icon=""><a href="#">Seen This Movie?</a></li>
+						<li data-icon=""><a href="#">Like It</a></li>
+						<li data-icon=""><a href="#">Write A Review</a></li>
+						<li data-icon=""><a href="#">Add To Watchlist</a></li>
+						<li data-icon=""><a href="#">Share</a></li>
+					</ul>
+				</nav>
+			</aside> {# EOE / .l-dv-sidebar__L #}
+
+			<section class="l-dv-content">
+				<div class="l-dv-content__header">
+					<h1 class="header-title"><span class="title"></span><span class="subtitle"></span><span class="release-year"></span></h1>
+					<div class="l-meta-block">
+						<div class="l-meta-block__inner">
+							<span class="meta-rating"></span>
+							<span class="meta-runtime"></span>
+							<span class="meta-genre genre-holder"></span>						
+						<ul class="meta-stars" data-rating="{{movie.star_rating}}">
+	            		{% for number in range(0,10) %}
+		            		<li class="star"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/></svg></li>
+	            		{% endfor %}
+		            	</ul>
+						</div>
+					</div>
+					<div class="l-meta-block abs-float--right">
+						<div class="l-meta-block__sub meta-director">
+							<h3>Director</h3>
+							<div class="director-holder"></div>							
+						</div>
+						<div class="l-meta-block__sub meta-writers">
+							<h3>Writers</h3>
+							<div class="writers-holder"></div>
+						</div>
+					</div>
+				</div>
+				<div class="l-dv-content__body">
+					<div class="c-card">
+						<div class="c-card__header"><h3>Storyline</h3></div>
+						<div class="c-card__body storyline-holder"></div>
+					</div>
+					<div class="c-card">
+						<div class="c-card__header"><h3>Cast</h3></div>
+						<div class="c-card__body cast-holder"></div>
+					</div>
+					<div class="c-card soundtrack-holder">
+						<div class="c-card__header"><h3>Music featured in <span></span></h3></div>
+						<div class="c-card__body">
+						{% for number in range(0,10) %}
+		            		<li class="track">
+			            		<span class="track__no">{{number + 1}}</span>
+			            		<span class="track__info">
+			            			<a class="title">Submission</a>
+			            			<a class="artist">Tyler Bates <span class="ost-id">Captain America: Civil War OST</span></a>
+			            		</span>
+			            		<span class="track__runtime">0:00</span>
+		            		</li>
+	            		{% endfor %}
+						</div>
+					</div>
+					<div class="c-card">
+						<div class="c-card__header"><h3>Reviews</h3></div>
+						<div class="c-card__body reviews-holder"></div>
+					</div>
+				</div>					
+			</section> {# EOE / .l-dv-content #}
+
+			<aside class="l-dv-sidebar l-dv-sidebar__R">
+				{% for movie in movies %}
+					<div class="c-card c-card-media"></div>
+				{% endfor %}
+			</aside> {# EOE / .l-dv-sidebar__R #}
+
+			<div class="media-player-holder">
+				<span class="media-player">
+					<i class="bttn-close">Close</i>
+				</span>
+				<div class="l-media-drawer">
+					<span class="c-drawer__item"></span>
+					<span class="c-drawer__item"></span>
+					<span class="c-drawer__item"></span>
+				</div>
+			</div>			
+		</div>
+	</section> {# EOE / .l-dv #}
+
+{% endblock %}
+
+{%- block js -%}
+	<script defer src="/js/concepts/muvizone/navigator.js"></script>
+	<script defer src="/js/concepts/muvizone/view.js"></script>
+	<script defer src="/js/concepts/muvizone/star-rating.js"></script>
+	<script defer src="/js/concepts/muvizone/fetch.js"></script>
+	<script defer src="/js/concepts/muvizone/player.js"></script>
+{% endblock %}

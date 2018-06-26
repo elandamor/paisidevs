@@ -1,0 +1,27 @@
+{
+  "name": "pdSSK",
+  "version": "0.0.0",
+  "main": "index.js",
+  "authors": [
+    "Thandolwethu Mpofu <mpofuthandolwethu@gmail.com>"
+  ],
+  "license": "ISC",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "adaptive-backgrounds": "^1.0.3",
+    "classie": "^1.0.1",
+    "jquery": "^2.2.0",
+    "raf.js": "^0.0.4",
+    "requirejs": "^2.1.22"
+  },
+  "description": "",
+  "moduleType": [],
+  "homepage": ""
+}

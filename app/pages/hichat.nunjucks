@@ -1,0 +1,202 @@
+{% extends "base.nunjucks" %}
+
+{% block title %}paisidevs Concepts | HiChat{% endblock %}
+
+{% set page_id = "hichat-app" %}
+{% set app_build = page_id %}
+{% set ab_title__chapter = "HiChat" %}
+
+{% set friends = [
+		{
+			"name" : "Robert William",
+			"placeholder" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+			"status" : "online"
+		}, 
+		{
+			"name" : "Albert Steven",
+			"placeholder" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+			"status" : "online"
+		}, 
+		{
+			"name" : "Jonathan Leane",
+			"placeholder" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+			"status" : "online"
+		}, 
+		{
+			"name" : "Bagus Fikri",
+			"placeholder" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+			"status" : "online"
+		}, 
+		{
+			"name" : "Alyona Kosheeva",
+			"placeholder" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+			"status" : "online"
+		}, 
+		{
+			"name" : "Muhammad Zayn",
+			"placeholder" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+			"status" : "online"
+		}, 
+		{
+			"name" : "Diana",
+			"placeholder" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+			"status" : "offline"
+		}, 
+		{
+			"name" : "Abdul Razak",
+			"placeholder" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+			"status" : "offline"
+		}, 
+		{
+			"name" : "Vino Bastian",
+			"placeholder" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+			"status" : "offline"
+		}, 
+		{
+			"name" : "John Appleseed",
+			"placeholder" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+			"status" : "offline"
+		}
+	]
+%}
+
+{% set messages = [
+		{
+			"msg" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum ab magni dolor molestias voluptates rem voluptas ipsum id, eius blanditiis eum! A, nostrum distinctio, blanditiis quod facilis consequatur in quisquam.",
+			"exchange" : "incoming"
+		},
+		{
+			"msg" : " Quaerat libero explicabo, quasi eaque reprehenderit hic, accusantium assumenda officia. Quidem nesciunt itaque eaque eligendi numquam debitis inventore laborum placeat necessitatibus similique. ",
+			"exchange" : "incoming"
+		},
+		{
+			"msg" : "Nobis placeat eum ducimus dolorum nam, dolore labore iste hic modi ab aut eligendi voluptatibus commodi quisquam libero!",
+			"exchange" : "outgoing"
+		},
+		{
+			"msg" : "Earum ab magni dolor molestias voluptates rem voluptas ipsum id, eius blanditiis eum! A, nostrum distinctio, blanditiis quod facilis consequatur in quisquam.",
+			"exchange" : "outgoing"
+		},
+		{
+			"msg" : " Quaerat libero explicabo, quasi eaque reprehenderit hic, accusantium assumenda officia. Quidem nesciunt itaque eaque eligendi numquam debitis inventore laborum placeat necessitatibus similique. ",
+			"exchange" : "incoming"
+		},
+		{
+			"msg" : "Nobis placeat eum ducimus dolorum nam, dolore labore iste hic modi ab aut eligendi voluptatibus commodi quisquam libero!",
+			"exchange" : "outgoing"
+		},
+		{
+			"msg" : " Quaerat libero explicabo, quasi eaque reprehenderit hic, accusantium assumenda officia. Quidem nesciunt itaque eaque eligendi numquam debitis inventore laborum placeat necessitatibus similique. ",
+			"exchange" : "incoming"
+		},
+		{
+			"msg" : "Nobis placeat eum ducimus dolorum nam, dolore labore iste hic modi ab aut eligendi voluptatibus commodi quisquam libero!",
+			"exchange" : "outgoing"
+		},
+		{
+			"msg" : " Quaerat libero explicabo, quasi eaque reprehenderit hic, accusantium assumenda officia. Quidem nesciunt itaque eaque eligendi numquam debitis inventore laborum placeat necessitatibus similique. ",
+			"exchange" : "incoming"
+		},
+		{
+			"msg" : "Nobis placeat eum ducimus dolorum nam, dolore labore iste hic modi ab aut eligendi voluptatibus commodi quisquam libero!",
+			"exchange" : "outgoing"
+		},
+		{
+			"msg" : " Quaerat libero explicabo, quasi eaque reprehenderit hic, accusantium assumenda officia. Quidem nesciunt itaque eaque eligendi numquam debitis inventore laborum placeat necessitatibus similique. ",
+			"exchange" : "outgoing"
+		}
+	]
+%}
+
+{% block app_bar__nav_hor %}
+<nav class="app-bar--nav-hor">
+	<ul>
+		<li class="is-active"><a href="#friends">Friends</a></li>
+		<li><a href="#work">Work</a></li>
+		<li><a href="#family">Family</a></li>
+		<li><a href="#add-category">Category</a></li>
+	</ul>
+</nav>
+
+<div class="auth-container">
+	<span class="card-artwork"></span>
+	<div class="card-info" title="">
+    <span class="card-info-item card-info--name">Agung</span>
+    <span class="card-info-item card-info--status">Available</span>
+  </div>
+</div>
+{% endblock %}
+
+{% block subbar %}
+<div class="chat-subbar">
+	<div class="chat-subbar-friends">
+		<h5 class="h-label">Friends</h5>
+		<div class="action-container">
+			<button class="icon new-friend">New</button>
+		</div>
+	</div>
+	<div class="chat-subbar-content">
+		<h5 class="h-label">Chat</h5>
+		<div class="action-container">
+			<i class="icon chat-voice"></i>
+			<i class="icon chat-video"></i>
+			<button class="icon more">More</button>
+		</div>
+	</div>
+	<div class="chat-subbar-online">
+		<h5 class="h-label">Online</h5>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="chat-container">
+	<aside class="friends">
+	{% for friend in friends %}
+    <div class="card status-{{friend.status}}">
+        <span class="card-inner">
+            <span class="card-artwork"></span>
+            <div class="card-info" title="">
+                <span class="card-info-item card-info--name">{{friend.name}}</span>
+                <span class="card-info-item card-info--status">{{friend.placeholder}}</span>
+            </div>
+        </span>
+    </div>
+    {% endfor %}
+	</aside>
+	<div class="chat-content">
+		{% for message in messages %}
+	    <div class="card msg-{{message.exchange}}">
+	        <span class="card-inner">
+	            <span class="card-artwork"></span>
+	            <div class="card-message" title="">{{message.msg}}</div>
+	        </span>
+	    </div>
+	    {% endfor %}
+	</div>
+	<aside class="online">
+	{% for friend in friends %}
+    <div class="card status-{{friend.status}}">
+        <span class="card-inner">
+            <span class="card-artwork"></span>
+            <div class="card-info" title="">
+                <span class="card-info-item card-info--name">{{friend.name}}</span>
+                <span class="card-info-item card-info--status">{{friend.status|capitalize}}</span>
+            </div>
+        </span>
+    </div>
+    {% endfor %}
+	</aside>
+	<footer class="chat-input--container">
+		<form action="">
+			<input type="text" class="chat-input" placeholder="Write here...">
+			<input type="file" class="attach-file">
+			<button type="submit" class="chat-submit">Send</button>
+		</form>
+	</footer>
+</div>
+{% endblock %}
+
+{%- block js -%}
+	<script defer src="/js/concepts/hichat/message.js"></script>
+{% endblock %}

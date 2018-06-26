@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="88px" height="87px" viewBox="0 0 88 87" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="3" sketch:type="MSLayerGroup" transform="translate(-4.000000, 2.000000)">
+            <path d="M48,69.0504518 C61.8071187,69.0504518 73,44.8923404 73,28.920171 C73,12.9480016 61.8071187,0 48,0 C34.1928813,0 23,12.9480016 23,28.920171 C23,44.8923404 34.1928813,69.0504518 48,69.0504518 Z" id="O-Copy-3" fill="#000000" filter="url(#filter-1)" sketch:type="MSShapeGroup"></path>
+            <g id="l-r" transform="translate(0.000000, 4.000000)" fill="#555555" sketch:type="MSShapeGroup" opacity="0.699999988">
+                <path d="M60.5633645,76.0074223 C74.3704833,76.0074223 85.5633645,51.8493109 85.5633645,35.8771415 C85.5633645,19.9049721 74.3704833,6.95697046 60.5633645,6.95697046 C46.7562458,6.95697046 35.5633645,19.9049721 35.5633645,35.8771415 C35.5633645,51.8493109 46.7562458,76.0074223 60.5633645,76.0074223 Z" id="O-Copy-2" filter="url(#filter-2)" transform="translate(60.563365, 41.482196) rotate(19.000000) translate(-60.563365, -41.482196) "></path>
+                <path d="M35.441643,76.0074223 C49.2487617,76.0074223 60.441643,51.8493109 60.441643,35.8771415 C60.441643,19.9049721 49.2487617,6.95697046 35.441643,6.95697046 C21.6345242,6.95697046 10.441643,19.9049721 10.441643,35.8771415 C10.441643,51.8493109 21.6345242,76.0074223 35.441643,76.0074223 Z" id="O-Copy-4" filter="url(#filter-3)" transform="translate(35.441643, 41.482196) scale(-1, 1) rotate(19.000000) translate(-35.441643, -41.482196) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

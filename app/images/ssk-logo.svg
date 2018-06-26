@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="166px" height="176px" viewBox="0 0 166 176" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>SSK Logo Large</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="SSK-Logo-Large" sketch:type="MSLayerGroup" transform="translate(3.586207, 2.000000)">
+            <path d="M79.4137931,144.45037 C108.297651,144.45037 131.712644,93.9127121 131.712644,60.4996681 C131.712644,27.086624 108.297651,0 79.4137931,0 C50.5299355,0 27.1149425,27.086624 27.1149425,60.4996681 C27.1149425,93.9127121 50.5299355,144.45037 79.4137931,144.45037 Z" id="O-Copy-3" fill="#3B469C" filter="url(#filter-1)" sketch:type="MSShapeGroup"></path>
+            <g id="l-r" transform="translate(0.000000, 22.367816)" fill="#38C0EB" opacity="0.699999988" sketch:type="MSShapeGroup">
+                <path d="M79.8743706,143.572188 C106.352957,153.242396 143.770512,111.942924 154.317477,79.4547867 C164.864442,46.9666495 151.949311,12.7905582 125.470724,3.12035018 C98.9921379,-6.54985781 68.976998,11.9477286 58.4300332,44.4358658 C47.8830684,76.924003 53.3957841,133.90198 79.8743706,143.572188 L79.8743706,143.572188 Z" id="O-Copy-2" filter="url(#filter-2)"></path>
+                <path d="M78.9636911,143.572188 C52.4851046,153.242396 15.0675493,111.942924 4.52058447,79.4547867 C-6.02638036,46.9666495 6.88875081,12.7905582 33.3673373,3.12035018 C59.8459238,-6.54985781 89.8610637,11.9477286 100.408028,44.4358658 C110.954993,76.924003 105.442278,133.90198 78.9636911,143.572188 L78.9636911,143.572188 Z" id="O-Copy-4" filter="url(#filter-3)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

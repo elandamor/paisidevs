@@ -1,0 +1,105 @@
+@import "../__utils/variables";
+@import "../__utils/mixins";
+
+/**
+ * For debugging...
+ */
+
+	body {
+		&:before,
+		&:after {
+			display: none;
+			position: absolute;
+			top: 0;
+			content: '';
+			width: 16px;
+			height: 100%;
+			background: rgba(red, .25);
+			z-index: 9999;
+		}
+
+		&:before {
+			left: 0;
+		}
+
+		&:after {
+			right: 0;
+		}
+	}
+
+	.app-bar {
+		&:before,
+		&:after {
+			display: none;
+			position: absolute;
+			left: 0;
+			content: '';
+			width: 100%;
+			height: 16px;
+			background: rgba(#fff, .125);
+			z-index: 9999;
+		}
+
+		&:before {
+			top: 0;
+		}
+
+		&:after {
+			bottom: 0;
+		}
+	}
+
+ /***************************************************/
+
+* {
+  box-sizing : border-box;
+}
+
+.bp-large,
+%bp-large {
+	position: relative;
+	width: 100%;
+	max-width: $bp-large;
+	margin: 0 auto;
+}
+
+.app-bar--menu {
+	position : absolute;
+	top      : $global-spacer / 2 - 1;
+	right     : $global-spacer / 2;
+	@include size(34px,$icon-touch-target);
+	cursor   : pointer;
+	line-height: $icon-touch-target;
+	text-align: center;
+
+	svg {
+		vertical-align: middle;
+		@include square($icon-size);
+		fill: #fff;
+	}	
+}
+
+@include breakpoint(480px) {
+}
+
+@include breakpoint($bp-tablet) {
+	.app-bar--menu {
+		top: $global-spacer - 1;
+	}
+
+	.app-content--inner {
+		top: $app-bar-tablet--height;
+	}
+}
+
+@include breakpoint(960px) {
+}
+
+@include breakpoint($bp-large) {
+}
+
+
+@import "dependencies/app-spinner";
+@import "dependencies/card";
+@import "dependencies/hichat-style";
+@import "dependencies/muvizone-style";

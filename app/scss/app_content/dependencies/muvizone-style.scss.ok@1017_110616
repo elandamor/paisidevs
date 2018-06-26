@@ -1,0 +1,641 @@
+@import "../__utils/variables";
+@import "../__utils/mixins";
+
+#muvizone-app {
+	$brand-primary: rgba(#000,0.75);
+
+	background : #000; // #f1f5f7
+
+	$global-padding : 24px;
+
+	.is-faded-out {
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity .3s $cb-ease-in-out;
+
+		&--mid {
+			opacity: 0.5;
+			pointer-events: none;
+		}
+	}
+
+	.mv-glob-nav {
+		transition: all .3s $cb-ease-in-out;
+	}
+
+	// .chat-content {
+		// &:before,
+		// &:after {
+		// 	display: block;
+		// 	position: absolute;
+		// 	left: 0;
+		// 	content: '';
+		// 	width: $global-spacer * 2;
+		// 	height: 100%;
+		// 	background: rgba(red, .5);
+		// 	z-index: 9999;
+		// }
+
+		// &:before {
+		// 	top: 0;
+		// }
+
+		// &:after {
+		// 	left: auto;
+		// 	right: 0;
+		// }
+	// }
+
+	.app-header {
+		background : $brand-primary;
+		height : $app-bar-tablet--height + ($app-bar-tablet--height * 1.25);
+		box-shadow : none;
+
+		&:after {
+			bottom: -$global-padding;
+			display: none;
+			position: absolute;
+			left: 0;
+			content: '';
+			width: 100%;
+			height: $global-padding;
+			background: rgba(purple, .5);
+			z-index: 9999;
+		}
+	}
+
+	.app-bar {
+		max-width: 100%;
+		height: $app-bar-tablet--height;
+		border-bottom: thin solid rgba(#fff, 0.1275);
+		overflow: hidden;
+	}
+
+	.app-bar--nav {
+		left: $global-padding - $global-spacer - 4;
+	}
+
+	.app-bar--title {
+		display: none;
+		line-height : ($app-bar-tablet--height - 1);
+	}
+
+	.app-bar--nav-hor {
+		@extend clearfix;
+		@include vertical-align;
+		position: absolute;
+		left : 0;
+		right: 0;
+
+		ul {
+			margin: 0;
+			padding : 0;
+		}
+
+		li {
+			display: inline-block;
+			position: relative;
+			list-style: none;
+			margin: 0;
+			width: calc(100% / 8);
+			height: $app-bar-tablet--height * 1.25;
+			float: left;
+			text-align: center;
+			opacity: 0.75;
+
+			&.is-active {
+				background : rgba(#000,0.25);
+				opacity: 1;
+
+				&::before {
+					position: absolute;
+					left : 0;
+					content: '';
+					@include size(100%,3px);
+					background : #fafafa;
+				}
+
+				a {
+					font-weight : 700;
+				}
+			}
+
+			a {
+				display: block;
+				text-decoration: none;
+				vertical-align: middle;
+				@include square(100%);
+				@include font-size(10px);
+				line-height: $app-bar-tablet--height * 1.25;
+				letter-spacing : 1px;
+				font-weight    : 600;
+				color : #fff;
+				border-radius : 4px;
+				@include text-upper;
+			}
+		}
+	}
+
+	.auth-container {
+		display: block;
+		position: absolute;
+		right: 0;
+		width: 150px;
+		height: 100%;
+		cursor: pointer;
+
+		.card-artwork {
+			top: $global-spacer * 2;
+			background : rgb(108,174,226);
+		}
+
+		.card-info {
+			padding: 0;
+		}
+
+		.card-info--name {
+			@include vertical-align;
+			color: #fff;
+			text-align: right;
+			padding-right: $icon-size / 1.5;
+
+			&::after {
+				@include vertical-align;
+				position: absolute;
+				content: '';
+				right: -$global-spacer / 1.25;
+				margin-top: -1px;
+				@include square($icon-size);
+				background-image : url('../images/icons/ic_arrow_drop_down_24px.svg');
+				background-size     : 75%;
+				background-repeat   : no-repeat;
+				background-position : center center;
+			}
+		}
+
+		.card-info--status {
+			color: rgb(221,234,248);
+
+			&::after {
+				@include vertical-align;
+				position: absolute;
+				content: '';
+				right: -$global-spacer /2;
+				@include square($icon-size);
+				background-image : url('../images/icons/ic_expand_more_24px.svg');
+				background-size     : 75%;
+				background-repeat   : no-repeat;
+				background-position : center center;
+			}
+		}
+	}
+
+	.app-bar--menu {
+		display: none;
+	}
+
+	.chat-subbar {
+		@extend %clearfix;
+		position: relative;
+		height: $app-bar-tablet--height * 1.25;
+		transition: opacity .3s $cb-ease-in-out;
+	}
+
+	.app-content {
+		&--inner {
+			top : 0;			
+			overflow: hidden;
+		}
+	}
+
+	.card {
+		display          : block;
+		position         : relative;
+		margin           : 0 auto;
+		border-bottom    : none;
+		pointer-events: none;
+
+			&-inner {
+				display: block;
+				position: absolute;
+				top: $app-bar-tablet--height + ($app-bar-tablet--height * 1.25);
+				width: 100%;
+			}
+
+			&-info {
+				$width: $icon-touch-target + $global-spacer + $icon-touch-target;
+
+				@include vertical-align;
+				position: absolute;
+				display: block;
+				@include size(auto,$icon-touch-target + $global-spacer);
+				// background-color: rgba(#000, .12);
+				left: $global-padding + $global-spacer;
+				right: $global-padding;
+				padding-top: 10px;
+				pointer-events: none;
+
+				&-item {
+					display: block;
+					@include truncate;
+					@include font($font-family-pri,14px);
+					text-decoration: none;
+					letter-spacing: 1px;
+					text-align: left;
+					padding-left: $global-spacer;
+					// text-indent: -99999px;
+				}	
+
+				&--name {
+					position: relative;
+					display: block;
+					@include size(100%,16px);
+					// background-color: rgba(#000, .05);
+					margin-top: 2px;
+					color: rgb(52,51,50);
+					font-weight: 700;
+					@include font-size(10px);
+					line-height: 16px;
+				}
+			}
+	}
+
+	.movie-container {
+		position: relative;
+		transition: transform .3s $cb-ease-in-out;
+		will-change: transform;
+	}
+
+	.movie-backgrounds {
+		&::after {
+			position: absolute;
+			content: '';
+			@include square(100%);
+			left: 0;
+			top: 0;
+			background : rgba(#000,.80);
+		}		
+	}
+
+	.movie-bg {
+		position: fixed;
+		top: 0;
+		left: 0;
+		@include square(100%);
+		background-size     : cover;
+		background-repeat   : no-repeat;
+		background-position : center center;
+		opacity: 0;
+		will-change: opacity;
+		transition: opacity .4s $cb-ease-in-out;
+		z-index: 0;
+
+		&.is-visible {
+			opacity: 1;
+		}
+	}
+
+	.movie-card {
+		position: relative;
+		@include size(100vw,100vh);
+		background-size     : cover;
+		background-repeat   : no-repeat;
+		background-position : center center;
+		opacity: 0.125;
+		will-change: opacity;
+		transition: opacity .4s $cb-ease-in-out;
+		z-index: 1;
+
+		&.is-visible {
+			opacity: 1;
+		}
+
+		.card-inner {
+			@extend clearfix;
+			position: absolute;
+			bottom: 0;
+			color: #fff;
+			font-weight: 500;
+
+			.metadata-container {
+				@include vertical-align;
+				position: absolute;
+				padding : 0 20vw 0 15vw;
+			}
+
+			.movie-poster {
+				display: block;
+				position: absolute;
+				@include size(250px,375px);
+				margin-right: $global-padding;
+				background-size     : cover;
+				background-repeat   : no-repeat;
+				background-position : center center;
+				pointer-events: auto;
+				cursor: pointer;
+				transform: scale(1);
+				z-index: 1;
+				transition: transform .3s $cb-ease-in-out;
+				will-change: transform;
+
+				&:hover {
+					transform: scale(1.025);
+					// box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .24), 0 3px 14px 2px rgba(0, 0, 0, .22), 0 5px 5px -3px rgba(0, 0, 0, .42);
+				}
+			}
+
+			.movie-title {
+				margin: 0;
+				margin-top: $global-padding - 4;
+				padding: 0;
+				color: #fff;
+				@include font-size(28px);
+				font-weight: 400;
+			}
+
+			.sub-metadata--container {
+				padding-left : $global-padding + 250; 
+			}
+
+			.metadata {		
+				@extend %clearfix;
+				position: relative;
+				margin: 0;
+				margin: $global-spacer 0 $global-spacer * 2;
+				padding: 0;
+				height: 30px;
+				@include font-size(11px);
+				font-weight: 700;
+				letter-spacing: 1px;
+				// background: $brand-primary;
+
+				li {
+					display: inline-block;
+					position: relative;
+					list-style: none;
+					margin-right: $global-spacer;
+					height: 30px;
+					float: left;
+					text-align: center;
+					opacity: 0.85;
+
+					a {
+						display: block;
+						text-decoration: none;
+						vertical-align: middle;
+						@include font-size(10px);
+						line-height: 30px;
+						letter-spacing : 1px;
+						font-weight    : 700;
+						color : #fff;
+						border-radius : 4px;
+					}
+
+					&.star {
+						margin: 0 -3px;
+						opacity: 1;
+					}
+				}
+
+				.rated {
+					$icon-size: 30px;
+
+					@include square($icon-size);
+					background-size     : 60%;
+					background-repeat   : no-repeat;
+					background-position : center center;
+					text-indent: -99999px;
+					margin-right: -6px;
+					margin-left: -($global-spacer * 2);
+					opacity: 1;
+					pointer-events: auto;
+					cursor: pointer;
+
+					&-R {
+						background-image : url('../images/movie/meta-rating/rated-r.png');
+						background-size     : 75%;
+						margin-left: 0;
+						margin-right: $global-spacer + 2;
+					}
+
+					&-PG {
+						@include size($icon-size * 2, $icon-size - 1);
+						background-image : url('../images/movie/meta-rating/rated-pg.png');
+						margin-left: -10px;
+						margin-right: 0;
+					}
+
+					&-PG-13 {
+						@include size($icon-size * 3, $icon-size - 1);
+						background-image : url('../images/movie/meta-rating/rated-pg-13.png');
+					}
+				}
+
+				.genre {
+					// display: none;
+					@include text-upper;
+					font-weight: 600;
+					color: #fff;
+					margin-left: 4px;
+					pointer-events: auto;
+
+					.genre-tag {
+						@include vertical-align;
+						display: inline-block;
+						padding: 4px 4px 3px 4px;
+						@include font-size(8px);
+						letter-spacing: 1px;
+						border: thin solid #fff;
+						border-radius: 2px;
+						line-height: 1;
+						cursor: pointer;
+					}
+				}
+			}
+
+			.movie-director,
+			.movie-writer,
+			.movie-cast {
+				margin-top: $global-spacer;
+
+				.label {
+					margin: $global-spacer 0 0;
+					padding: 0;
+					@include font-size(12px);
+					font-weight: 700;
+					letter-spacing: 1px;
+					opacity: 0.95;
+				}
+
+				a {
+					@include font-size(14px);
+					pointer-events: auto;
+					opacity: 0.65;
+
+					&:hover {
+						opacity: 1;
+						text-decoration: underline;
+						cursor: pointer;
+					}
+				}
+
+				.sep {
+					margin: 0 2px;
+					@include font-size(10px);
+					opacity: 0.65;
+				}
+			}
+
+				.movie-cast .label {
+					margin-top: $global-spacer * 1.25;
+				}
+
+			.summary {
+				@include font-size(14px);
+			}
+
+			.action-bttn--container {
+				display: none;
+				position: absolute;
+				bottom: 0;
+				margin-left: $global-padding + 250;
+			}
+
+			.action-bttn {
+				position: relative;
+				background: none;
+				color: #fff;
+				padding: 12px $global-spacer * 2;
+				@include font-size(10px);
+				font-weight: 600;
+				letter-spacing: 1px;
+				border: thin solid #fff;
+				border-radius: 2px;
+				pointer-events: auto;
+				cursor: pointer;
+				@include text-upper;
+			}
+		}
+	}
+
+	.nav-dots {
+		display: block;
+		@include vertical-align;
+		position: absolute;
+		left: 5vw;
+		margin-top: ($app-bar-tablet--height + ($app-bar-tablet--height * 1.25)) / 2;
+		pointer-events: auto;
+
+		li {
+			position: relative;
+			@include square($global-padding);
+			list-style: none;
+			text-indent: -99999px;
+			margin: 0;
+			cursor: pointer;
+
+			&::after {
+				display: block;
+				@include vertical-align;
+				position: absolute;
+				content: '';
+				@include square($global-spacer);
+				@include l-r(0,0);
+				margin: 0 auto;
+				background: rgba(#fff, 1);
+				border-radius: 100%;
+				transition: all .4s $cb-ease-in-out;
+			}
+
+			&.is-active {				
+				&::after {
+					@include square($global-spacer * 1.5);
+					background: rgba(#fff, 0);
+					border: 2px solid #fff;
+				}
+			}
+		}
+	}
+
+	.nav-arrows {
+		display: block;
+		@include vertical-align;
+		position: absolute;
+		right: 5vw;
+		margin-top: ($app-bar-tablet--height + ($app-bar-tablet--height * 1.25)) / 2;
+		pointer-events: auto;
+
+		.arrow {
+			display: block;
+			// position: relative;
+			margin: $global-spacer 0;
+			@include size(48px, 32px);
+			padding-top: 5px;
+			text-align: center;
+			border: thin solid #fff;
+			border-radius: 2px;
+			transition: transform .3s, opacity .3s $cb-ease-in-out;
+			cursor: pointer;
+
+				&-up {
+					&:hover {
+						transform: translateY(-$global-spacer / 2);
+					}
+				}
+
+				&-down {
+					&:hover {
+						transform: translateY($global-spacer / 2);
+					}
+				}
+
+			&:hover {
+				opacity: 1;
+			}
+
+			svg {
+				pointer-events: none;
+				@include square($icon-size/2);
+				line-height: 32px;
+				fill           : #fff;
+			}
+		}
+	}
+
+	.star-rating {
+		float: left;
+		display: flex;
+		flex-flow: row-reverse;
+		width: ($icon-size * 5) - ((3 * 2) * 5);
+		padding: 0;
+		padding-top: 3px;
+		margin-right: $global-spacer + 2;
+		pointer-events: auto;
+
+		svg {
+			@include square($icon-size);
+			fill: #fff;
+			pointer-events: none;
+		}
+
+		.star.is-selected svg,
+		.star.is-selected ~ .star svg {
+			fill: orange;
+		}
+
+		.star {
+			cursor: pointer;
+
+			&:hover {
+				svg {
+					fill: rgb(249,189,65);
+				}
+			}
+		}
+
+		.star:hover ~ .star svg {
+			fill: orange;
+		}
+	}
+}
+

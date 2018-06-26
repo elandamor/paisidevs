@@ -1,0 +1,485 @@
+@import "../__utils/variables";
+@import "../__utils/mixins";
+
+#hichat-app {
+	$brand-primary: #519fdc; // #519fdc
+
+	background : #f1f5f7; // #f1f5f7
+
+	$global-padding : 24px;
+
+	// .chat-content {
+		// &:before,
+		// &:after {
+		// 	display: block;
+		// 	position: absolute;
+		// 	left: 0;
+		// 	content: '';
+		// 	width: $global-padding;
+		// 	height: 100%;
+		// 	background: rgba(#000, .125);
+		// 	z-index: 9999;
+		// }
+
+		// &:before {
+		// 	top: 0;
+		// }
+
+		// &:after {
+		// 	left: auto;
+		// 	right: 0;
+		// }
+	// }
+
+	.app-header {
+		background : $brand-primary;
+		height : ($app-bar-mobile--height + $global-padding) * 2;
+		box-shadow : 0 4px 5px 0 rgba(0, 0, 0, .014), 0 1px 10px 0 rgba(0, 0, 0, .012), 0 2px 4px -1px rgba(0, 0, 0, .02);
+		box-shadow : 0 1px 2px rgba(#000,0.1);
+		border-bottom: thin solid rgba(#000,.1);
+	}
+
+	.app-bar,
+	.chat-subbar {
+		max-width: 100%;
+		height: ($app-bar-mobile--height + $global-padding);
+		overflow: hidden;
+	}
+
+	.app-bar--nav {
+		top: $global-padding - $global-spacer;
+		left: $global-padding - $global-spacer - 4;
+	}
+
+	.app-bar--title {
+		left        : $app-bar-mobile--height + $global-padding;
+		line-height : ($app-bar-mobile--height + $global-padding);
+	}
+
+	.app-bar--nav-hor {
+		display: none;
+		@include vertical-align;
+		position: absolute;
+		left : 320px;
+
+		ul {
+			margin: 0;
+			padding : 0;
+		}
+
+		li {
+			display: inline-block;
+			list-style: none;
+			margin-left : $global-padding;
+
+			&.is-active {
+				a {
+					background : rgb(108,174,226);
+				}
+			}
+
+			a {
+				display: block;
+				text-decoration: none;
+				vertical-align: middle;
+				padding: 12px $global-padding;
+				@include font-size(13px);
+				letter-spacing : 1px;
+				font-weight    : 600;
+				color : #fff;
+				border-radius : 4px;
+			}
+		}
+	}
+
+	.auth-container {
+		display: block;
+		position: absolute;
+		right: 0;
+		width: 200px;
+		height: 100%;
+		cursor: pointer;
+
+		.card-artwork {
+			top: $global-spacer * 2;
+			background : rgb(108,174,226);
+		}
+
+		.card-info--name {
+			color: #fff;
+		}
+
+		.card-info--status {
+			color: rgb(221,234,248);
+
+			&::after {
+				@include vertical-align;
+				position: absolute;
+				content: '';
+				right: -$global-spacer /2;
+				@include square($icon-size);
+				background-image : url('../images/icons/ic_expand_more_24px.svg');
+				background-size     : 75%;
+				background-repeat   : no-repeat;
+				background-position : center center;
+			}
+		}
+	}
+
+	.app-bar--menu {
+		display: none;
+	}
+
+	.chat-subbar {
+		@extend %clearfix;
+		background : #f1f5f7;
+
+		&-friends,
+		&-content,
+		&-online {
+			position: absolute;
+			padding: 0 $global-padding;
+			text-align: left;
+
+			.h-label {
+				position: absolute;
+				margin: 0;
+				padding: 0;
+				@include font-size(13px);
+				letter-spacing : 1px;
+				font-weight    : 600;
+				@include text-upper;
+				line-height: ($app-bar-mobile--height + $global-padding) + 2;
+				color: $brand-primary;
+			}
+
+			.action-container {
+				@extend clearfix;
+				position: absolute;
+				right: $global-spacer;
+				width: auto;
+				height: ($app-bar-mobile--height + $global-padding);
+
+				.icon {
+					float: left;
+					display: inline-block;
+					@include vertical-align;
+					@include square($icon-touch-target);
+					background-size     : $icon-size;
+					background-repeat   : no-repeat;
+					background-position : center center;
+					border : none;
+					background-color : none;
+					text-indent: -99999px;
+					border-radius: 4px;
+					cursor: pointer;
+
+					&.new-friend {
+						background-image : url('../images/icons/ic_add_24px.svg');
+					}
+
+					&.chat-voice {
+						background-image : url('../images/icons/ic_call_24px.svg');
+					}
+
+					&.chat-video {
+						background-image : url('../images/icons/ic_videocam_24px.svg');
+					}
+
+					&.more {
+						background-image : url('../images/icons/ic_more_vert_24px.svg');
+					}
+				}
+
+				button {
+					background: none;
+					margin-left: $global-padding;
+
+					&.more {
+						margin-right: -($global-spacer / 2);
+					}
+				}
+			}
+		}
+
+		&-friends {
+			width : 320px;
+		}
+
+		&-content {
+			position: absolute;
+			height: ($app-bar-mobile--height + $global-padding);
+			@include l-r(320px,320px);
+			background: #fff;
+			border-left: thin solid rgba(#000,.1);
+			border-right: thin solid rgba(#000,.1);
+		}
+
+		&-online {
+			width : 320px;
+			right: 0;
+		}
+	}
+
+	.app-content {
+		&--inner {
+			top : ($app-bar-mobile--height + $global-padding) * 2;
+			overflow: hidden;
+		}
+	}
+
+	.and-header {
+		background : $brand-primary;
+	}
+
+	.chat-container {
+		@include square(100%);
+		@extend %clearfix;
+
+		aside {
+			position: absolute;
+			@include size(320px,100%);
+			overflow-x: hidden;
+			overflow-y: auto;
+			-webkit-overflow-scrolling: touch;
+
+			&.friends {
+				.card {
+					@include size(auto,$app-bar-mobile--height + $global-padding * 2);
+				}
+			}
+
+			&.online {
+				right: 0;
+
+				.card {
+					height : $app-bar-mobile--height + $global-padding;
+					border-bottom : none;
+
+						&.status-offline {
+							opacity: 0.75;
+
+							&::after {
+								background-color: rgb(202,213,221);
+							}
+						}
+
+					&::after {
+						@include vertical-align;
+						position: absolute;
+						display: block;
+						content: '';
+						background-color: $brand-primary;
+						@include square($global-spacer);
+						right: $global-padding;
+						opacity: 1;
+						border-radius : 100%;
+					}
+
+					&-artwork {
+						top: $global-padding - $global-spacer / 2;
+					}
+
+					&-info {
+						padding-top: 14px;
+					}
+				}
+			}
+		}
+
+		.chat-content {
+			position: absolute;
+			// height: 100%;
+			top : 0;
+			@include l-r(320px,320px);
+			bottom : $app-bar-tablet--height;
+			padding-top : $global-padding;
+			background: #fff;
+			border-left: thin solid rgba(#000,.1);
+			border-right: thin solid rgba(#000,.1);
+			overflow-x: hidden;
+			overflow-y: auto;
+			-webkit-overflow-scrolling: touch;
+
+			.card {
+				border-bottom : none;
+			}
+		}
+
+			.msg-incoming {
+				.card {
+					&-artwork {
+						top: $global-spacer;
+					}
+
+					&-message {
+						color: #fff;
+					}
+				}
+			}
+
+			.msg-outgoing {
+				.card {
+					&-artwork {
+						display: none;
+					}
+	
+					&-message {
+						background : #f1f5f7;
+						margin-left: $global-padding * 8;
+						margin-right: $global-padding;
+						color: rgb(68,68,68);
+					}				
+				}
+			}
+
+		.chat-input--container {
+			position: absolute;
+			bottom: 0;
+			height: ($app-bar-tablet--height);
+			@include l-r(321px,321px);
+			background: #fff;
+
+			.chat-input {
+				position: absolute;
+				border : none;
+				top: $global-spacer;
+				right: $app-bar-tablet--height;
+				left : $global-spacer;
+				padding: 0 $global-padding;
+				height: $icon-touch-target;
+				background : rgb(213,223,229);
+				font-family: $font-family-base;
+				@include font-size(12px);
+				font-weight: 500;
+				border-radius : 4px;
+				letter-spacing: 1px;
+				outline: 0;
+				@include placeholder(rgb(109,129,143));
+			}
+
+			.attach-file {
+				position: absolute;
+				top: $global-spacer;
+				right : $icon-touch-target + ($global-spacer * 2) + 2;
+				@include square($icon-touch-target);
+				border : none;
+				background : none;
+				background-image : url('../images/icons/ic_attach_file_24px.svg');
+				background-size     : $icon-size / 1.25;
+				background-repeat   : no-repeat;
+				background-position : center center;
+				text-indent: -99999px;
+				border-radius : 4px;
+				cursor : pointer;
+			}
+
+			.chat-submit {
+				position: absolute;
+				top: $global-spacer;
+				right : $global-spacer;
+				@include square($icon-touch-target);
+				border : none;
+				background : none;
+				background-image : url('../images/icons/ic_send_24px.svg');
+				background-size     : $icon-size;
+				background-repeat   : no-repeat;
+				background-position : center center;
+				text-indent: -99999px;
+				border-radius : 4px;
+				cursor : pointer;
+			}
+		}
+	}
+
+	.card {
+		display          : block;
+		position         : relative;
+		margin           : 0 auto;
+		@include square(auto);
+		border-bottom: thin solid rgba(#000,.05);
+		cursor           : pointer;
+
+			&-inner {
+				display: block;
+				position: relative;
+				@include square(100%);
+			}
+
+			&-artwork {
+				position: absolute;
+				@include square($icon-touch-target);
+				background: rgba(#000, .075);
+				top: $global-padding + $global-spacer / 2;
+				left: $global-padding;
+				border: none;
+				border-radius: 4px;
+			}
+
+			&-info {
+				$width: $icon-touch-target + $global-spacer + $icon-touch-target;
+
+				@include vertical-align;
+				position: absolute;
+				display: block;
+				@include size(auto,$icon-touch-target + $global-spacer);
+				// background-color: rgba(#000, .12);
+				left: $icon-touch-target + $global-padding + $global-spacer;
+				right: $global-padding;
+				padding-top: 10px;
+				pointer-events: none;
+
+				&-item {
+					display: block;
+					@include truncate;
+					@include font($font-family-pri,14px);
+					text-decoration: none;
+					letter-spacing: 1px;
+					text-align: left;
+					padding-left: $global-spacer;
+					// text-indent: -99999px;
+				}
+
+				&--message,
+				&--status {
+					position: relative;
+					display: block;
+					@include size(100%,18px);
+					margin-top: 2px;
+					@include font-size(12px);
+					font-weight: 500;
+					line-height: 18px;
+					color: rgb(170,170,170);
+				}	
+
+				&--name {
+					position: relative;
+					display: block;
+					@include size(100%,16px);
+					// background-color: rgba(#000, .05);
+					margin-top: 2px;
+					color: rgb(52,51,50);
+					font-weight: 600;
+					@include font-size(12px);
+					line-height: 16px;
+				}
+			}
+
+			&-message {
+				$width: $icon-touch-target + $global-spacer + $icon-touch-target;
+
+				display: block;
+				height: auto;
+				background-color: $brand-primary;
+				margin-left: $icon-touch-target + $global-padding * 2;
+				margin-right: $global-padding * 8;
+				padding: $global-spacer * 2;
+				pointer-events: none;
+				border-radius : 4px;
+				@include font-size(14px);
+				margin-bottom: $global-padding;
+				font-weight: 400;
+			}
+	}
+}
+

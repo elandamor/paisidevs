@@ -1,0 +1,14 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  Thandolwethu Mpofu -- Webmaster/Web Developer -- mpofuthandolwethu@gmail.com
+
+# THANKS
+
+  A special thanks to any and all, directly and indirectly responsible for inspiration and final Sublime Starter Kit.
+
+# TECHNOLOGY COLOPHON
+
+  HTML5, CSS3, JS, GULP

@@ -1,0 +1,112 @@
+class Navigator {
+	constructor () {
+		this.el              = document.getElementById('muvizone-app');
+		this.handle          = this.el.querySelector('.movie-container');
+		this.sections        = [].slice.call(this.handle.children);
+		this.sectionsCount   = this.sections.length;
+		this.sectionNav      = this.el.querySelector('.nav-dots');
+		this.sectionNavLinks = [].slice.call( this.sectionNav.children );
+
+		this.onTransitionEnd = this.onTransitionEnd.bind(this);
+		this.navigate        = this.navigate.bind(this);
+		
+		this.currentIndex = 0;
+		this.oldIndex = null;
+		this.newIndex = null;
+
+		this.isAnimating = false;
+
+		this.sectionNavLinks[this.currentIndex].classList.add('is-active');
+		this.sections[this.currentIndex].style.transform = `translateY(0vh)`;
+
+		this.addEventListeners();
+	}
+
+	addEventListeners () {
+		this.sectionNavLinks.forEach((link,idx ) => {
+			link.addEventListener('click', (evt) => {
+				evt.preventDefault();
+
+				this.oldIndex = this.currentIndex;
+
+				if (idx !== this.currentIndex) {
+					if (this.isAnimating) 
+						return;
+
+					requestAnimationFrame(this.navigate);
+
+					this.currentIndex = idx;
+					this.newIndex = this.currentIndex;					
+				}
+			});
+		});
+	}
+
+	navigate () {
+		const push_up = '-100vh';
+		const push_down = "100vh";
+		const pull_up = '0vh';
+		const pull_down = '0vh';
+		
+		const getBCR_OLD = this.sections[this.oldIndex].getBoundingClientRect(); 
+		const getBCR_NEW = this.sections[this.newIndex].getBoundingClientRect(); 
+
+		// get incoming section current offset.
+		const newBCR_top = getBCR_NEW.top;
+
+		this.isAnimating = true;
+
+		// if incoming section is below outgoing section.
+		if (this.newIndex > this.oldIndex) {
+			// position incoming section below outgoing section.
+			this.sections[this.newIndex].classList.remove('from-top');
+			this.sections[this.newIndex].classList.add('from-bottom');
+
+			// animate to new positions.
+			this.sections[this.oldIndex].classList.add('is-animating');
+			this.sections[this.oldIndex].style.transform = `translateY(-100vh)`;
+			this.sections[this.newIndex].classList.add('is-animating');
+			this.sections[this.newIndex].style.transform = `translateY(0vh)`;
+
+			// onTransitionEnd
+			this.sections[this.newIndex].addEventListener('transitionend', this.onTransitionEnd);
+		} else if (this.newIndex < this.oldIndex) { // if incoming section is above outgoing section
+			// position incoming section above outgoing section.
+			this.sections[this.newIndex].classList.remove('from-bottom');
+			this.sections[this.newIndex].classList.add('from-top');
+			this.sections[this.newIndex].style.transform = `translateY(-100vh)`;
+			
+			// animate to new positions.
+			this.sections[this.oldIndex].classList.add('is-animating');
+			this.sections[this.oldIndex].style.transform = `translateY(100vh)`;
+			this.sections[this.newIndex].classList.add('is-animating');
+			this.sections[this.newIndex].style.transform = `translateY(0vh)`;
+
+			// onTransitionEnd
+			this.sections[this.newIndex].addEventListener('transitionend', this.onTransitionEnd);
+		}
+
+		this.sectionNavLinks.forEach( function(el) {
+			el.classList.remove('is-active');
+		});
+
+		this.sectionNavLinks[this.currentIndex].classList.add('is-active');
+	}
+
+	onTransitionEnd (evt) {
+		this.sections[this.oldIndex].classList.remove('is-animating');
+		this.sections[this.newIndex].classList.remove('is-animating');
+		this.sections[this.oldIndex].classList.remove('from-bottom');
+		this.sections[this.newIndex].classList.remove('from-bottom');
+		this.sections[this.oldIndex].classList.remove('from-top');
+		this.sections[this.newIndex].classList.remove('from-top');
+
+		this.sections[this.oldIndex].style.transform = 'translateY(100vh)';
+
+		this.isAnimating = false;
+
+		this.sections[this.newIndex].removeEventListener('transitionend', this.onTransitionEnd);
+	}
+}
+
+new Navigator();

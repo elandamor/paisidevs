@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Thandolwethu Mpofu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>paisidevs Concepts | MuviZone</title>
+
+    <meta name="theme-color" content="#C0392B">
+
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+
+    <link rel="mask-icon" href="/icons/ssk-logo-grayscale.svg" color="none">
+
+    <style>html,body{position:relative;margin:0;padding:0;height:100%;letter-spacing:normal;font-family:"Avenir Next","Helvetica Neue","Lato","Segoe UI",Helvetica,Arial,sans-serif;font-size:1rem;font-weight:400;font-style:normal;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-moz-font-feature-settings:'liga','kern';-webkit-font-kerning:auto;-moz-font-kerning:auto;font-kerning:auto;background:#fafafa;overflow:hidden}.app-header{position:fixed;top:0;left:0;height:56px;background:#C0392B;box-shadow:0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);z-index:5}.app-header,.app-bar{display:block;width:100%}.app-bar{position:relative;height:100%;max-width:1340px;margin:0 auto}.standalone-app .app-header{top:20px}.app-bar--nav{position:absolute;top:3px;left:4px;width:48px;height:48px;cursor:pointer;line-height:48px;text-align:center}.app-bar--nav svg{vertical-align:middle;width:24px;height:24px;fill:#fff}.app-bar--title{position:absolute;font-size:.75rem;letter-spacing:1px;font-weight:700;color:#fff;padding-top:1px;left:72px;right:38px;line-height:56px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.app-bar--title .ab-title--section{display:none;position:relative;margin-right:20px;color:rgba(255,255,255,.5)}.app-bar--title .ab-title--section:after{position:absolute;content:'';top:35%;right:-12px;width:2px;height:30%;background:rgba(255,255,255,.5)}.app-content{display:block;position:absolute;height:100%;width:100%;overflow:hidden;z-index:0}.app-content--inner{position:absolute;width:100%;top:56px;bottom:0;padding:0;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;will-change:transform;-webkit-transform:translateZ(0);transform:translateZ(0)}.app-content--inner ::-webkit-scrollbar{width:0;height:0}.app-content--inner ::-webkit-scrollbar-thumb{background:#fff}.app-content--inner ::-webkit-scrollbar-track{background:#1f1f1f}.app-content--inner body{scrollbar-face-color:#fff;scrollbar-track-color:#1f1f1f}.standalone-app .app-content--inner{top:76px}@media only screen and (min-width:37.5rem){.app-bar .app-bar--title .ab-title--section{display:inline-block}}@media only screen and (min-width:37.5rem){.app-header{height:64px}.app-bar--nav{top:7px}.app-bar--title{left:80px;line-height:64px}.app-bar--title .ab-title--section:after{top:39%;height:22%}.app-content--inner{top:64px}}.app-drawer{position:fixed;overflow:hidden;pointer-events:none;z-index:6}.app-drawer,.app-drawer::before{top:0;left:0;width:100%;height:100%}.app-drawer::before{content:'';display:block;position:absolute;background:rgba(0,0,0,.4);opacity:0;will-change:opacity;transition:opacity .4s cubic-bezier(.4,0,.2,1)}.app-drawer--visible{pointer-events:auto}.app-drawer--visible::before{opacity:1}.app-drawer--visible .app-drawer--container{-webkit-transform:none;transform:none}.app-drawer--container{display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;position:relative;width:264px;height:100%;background:#fafafa;box-shadow:0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);-webkit-transform:translateX(-102%);transform:translateX(-102%);transition:transform .2s cubic-bezier(.4,0,.2,1);transition:transform .2s cubic-bezier(.4,0,.2,1),-webkit-transform .2s cubic-bezier(.4,0,.2,1);will-change:transform}.and-header{top:0;left:0;height:148.5px;background:#C0392B}.and-header,.and-inner{position:absolute;width:100%}.and-inner{top:148.5px;bottom:0;padding:8px 0;overflow-y:auto;-webkit-overflow-scrolling:touch;-webkit-transform:translateZ(0);transform:translateZ(0);will-change:transform}.and-inner dt{list-style:none;display:block;position:relative;width:100%;height:auto;margin-top:0;padding:15px 0 15px 22px;font-size:.8125rem;font-weight:700;color:#333;cursor:pointer;z-index:1}.and-inner dt.is-active{background:rgba(0,0,0,.125)}.and-inner dt.dropnav:after{position:absolute;right:8px;bottom:4px;width:34px;height:48px;background:rgba(0,0,0,.15);line-height:48px;text-align:center;cursor:pointer}</style>
+
+    <script src="/js/libs/modernizr.js"></script>
+    <!-- build:css /css/muvizone-app.css -->
+    <link rel="stylesheet" href="/css/app-content.css">
+
+    <!-- endbuild -->
+</head>
+
+<body id="muvizone-app">
+
+    <app-drawer class="app-drawer">
+        <nav class="app-drawer--container">
+            <header class="and-header"></header>
+            <section class="and-inner"></section>
+        </nav>
+    </app-drawer>
+
+    <app-header class="app-header">
+        <app-bar class="app-bar">
+            <i class="app-bar--nav">
+        <svg class="ab-nav-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </i>
+            <div class="app-bar--title">
+
+                <span class="ab-title--chapter">MuviZone</span>
+            </div>
+
+            <div class="auth-container">
+                <div class="card-info">
+                    <span class="card-info-item card-info--name">VIVEK V.</span>
+                </div>
+            </div>
+
+        </app-bar>
+
+    </app-header>
+
+    <app-content class="app-content">
+        <div class="app-content--inner">
+            <section class="l-movie-art">
+
+                <span class="c-card c-card-art" style="background-image:url('/images/movie/art/warcraft.jpg')"></span>
+
+                <span class="c-card c-card-art" style="background-image:url('/images/movie/art/captain-america-civil-war.jpg')"></span>
+
+                <span class="c-card c-card-art" style="background-image:url('/images/movie/art/the-jungle-book.jpg')"></span>
+
+                <span class="c-card c-card-art" style="background-image:url('/images/movie/art/the-angry-birds-movie.jpg')"></span>
+
+                <span class="c-card c-card-art" style="background-image:url('/images/movie/art/x-men-apocalypse.jpg')"></span>
+
+                <span class="c-card c-card-art" style="background-image:url('/images/movie/art/kung-fu-panda-3.jpg')"></span>
+
+            </section>
+
+            <ul class="l-movies-list">
+
+                <li class="c-card c-card-movie">
+                    <div class="c-card__body">
+                        <img src="/images/movie/poster/poster-warcraft.jpg" alt="movie-art" class="c-card-poster l-dv--trigger">
+                        <div class="c-card c-card-metadata">
+                            <div class="c-metadata__header">
+                                <h1 class="c-title l-dv--trigger">Warcraft: The Beginning</h1>
+                                <div class="l-meta-block">
+                                    <span class="meta-rating rated-PG-13">PG-13</span>
+
+
+
+                                    <span class="meta-runtime"><a class="runtime">123 min</a></span>
+                                    <span class="meta-genre genre-holder">
+								
+			            		
+				            		<a class="genre">Action</a>
+			            		
+				            		<a class="genre"> Adventure</a>
+			            		
+				            		<a class="genre"> Fantasy</a>
+			            		
+							</span>
+                                </div>
+                            </div>
+                            <div class="c-metadata__body">
+                                <h4 class="c-label">Director</h4>
+                                <div class="c-holder">
+
+
+
+                                    <a class="director">Duncan Jones</a>
+
+
+                                </div>
+                                <h4 class="c-label">Writer</h4>
+                                <div class="c-holder">
+
+
+
+                                    <a class="writer">Charles Leavitt</a><i class="sep"> • </i>
+
+                                    <a class="writer"> Duncan Jones</a>
+
+
+                                </div>
+                                <h4 class="c-label">Cast</h4>
+                                <div class="c-holder">
+
+
+                                    <a class="genre-tag">Paula Patton</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Travis Fimmel</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Ben Foster</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Robert Kazinsky</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Dominic Cooper</a>
+
+                                </div>
+                                <div class="c-holder row-4">The peaceful realm of Azeroth stands on the brink of war as its civilization faces a fearsome race of invaders: orc warriors fleeing their dying home to colonize another. As a portal opens to connect the two worlds, one
+                                    army faces destruction and the other faces extinction. From opposing sides, two heroes are set on a collision course that will decide the fate of their family, their people, and their home.</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="c-card c-card-movie">
+                    <div class="c-card__body">
+                        <img src="/images/movie/poster/poster-captain-america-civil-war.jpg" alt="movie-art" class="c-card-poster l-dv--trigger">
+                        <div class="c-card c-card-metadata">
+                            <div class="c-metadata__header">
+                                <h1 class="c-title l-dv--trigger">Captain America: Civil War</h1>
+                                <div class="l-meta-block">
+                                    <span class="meta-rating rated-PG-13">PG-13</span>
+
+
+
+                                    <span class="meta-runtime"><a class="runtime">147 min</a></span>
+                                    <span class="meta-genre genre-holder">
+								
+			            		
+				            		<a class="genre">Action</a>
+			            		
+				            		<a class="genre"> Adventure</a>
+			            		
+				            		<a class="genre"> Sci-Fi</a>
+			            		
+							</span>
+                                </div>
+                            </div>
+                            <div class="c-metadata__body">
+                                <h4 class="c-label">Director</h4>
+                                <div class="c-holder">
+
+
+
+                                    <a class="director">Anthony Russo</a><i class="sep"> • </i>
+
+                                    <a class="director"> Joe Russo</a>
+
+
+                                </div>
+                                <h4 class="c-label">Writer</h4>
+                                <div class="c-holder">
+
+
+
+                                    <a class="writer">Christopher Markus</a><i class="sep"> • </i>
+
+                                    <a class="writer"> Stephen McFeely</a>
+
+
+                                </div>
+                                <h4 class="c-label">Cast</h4>
+                                <div class="c-holder">
+
+
+                                    <a class="genre-tag">Chris Evans</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Robert Downey Jr.</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Scarlett Johansson</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Sebastian Stan</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Anthony Mackie</a>
+
+                                </div>
+                                <div class="c-holder row-4">Marvel’s “Captain America: Civil War” finds Steve Rogers leading the newly-formed team of Avengers in their continued efforts to safeguard humanity, but after another incident involving the Avengers results in collateral
+                                    damage, political pressure mounts to install a system of accountability, headed by a governing body to oversee and direct the team.</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="c-card c-card-movie">
+                    <div class="c-card__body">
+                        <img src="/images/movie/poster/poster-the-jungle-book.jpg" alt="movie-art" class="c-card-poster l-dv--trigger">
+                        <div class="c-card c-card-metadata">
+                            <div class="c-metadata__header">
+                                <h1 class="c-title l-dv--trigger">The Jungle Book</h1>
+                                <div class="l-meta-block">
+                                    <span class="meta-rating rated-PG">PG</span>
+
+
+
+                                    <span class="meta-runtime"><a class="runtime">106 min</a></span>
+                                    <span class="meta-genre genre-holder">
+								
+			            		
+				            		<a class="genre">Adventure</a>
+			            		
+				            		<a class="genre"> Drama</a>
+			            		
+				            		<a class="genre"> Family</a>
+			            		
+				            		<a class="genre"> Fantasy</a>
+			            		
+							</span>
+                                </div>
+                            </div>
+                            <div class="c-metadata__body">
+                                <h4 class="c-label">Director</h4>
+                                <div class="c-holder">
+
+
+
+                                    <a class="director">Jon Favreau</a>
+
+
+                                </div>
+                                <h4 class="c-label">Writer</h4>
+                                <div class="c-holder">
+
+
+
+                                    <a class="writer">Justin Marks</a><i class="sep"> • </i>
+
+                                    <a class="writer"> Rudyard Kipling</a>
+
+
+                                </div>
+                                <h4 class="c-label">Cast</h4>
+                                <div class="c-holder">
+
+
+                                    <a class="genre-tag">Neel Sethi</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Idris Elba</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Ben Kingsley</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Bill Murray</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Scarlett Johansson</a>
+
+                                </div>
+                                <div class="c-holder row-4">The man-cub Mowgli flees The jungle after a threat from the Tiger Shere Khan. Guided by Bagheera the panther and the bear Baloo, Mowgli embarks on a journey of self-discovery, though he also meets creatures who don&#39;t
+                                    have his best interests at heart.</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="c-card c-card-movie">
+                    <div class="c-card__body">
+                        <img src="/images/movie/poster/poster-the-angry-birds-movie.jpg" alt="movie-art" class="c-card-poster l-dv--trigger">
+                        <div class="c-card c-card-metadata">
+                            <div class="c-metadata__header">
+                                <h1 class="c-title l-dv--trigger">The Angry Birds Movie</h1>
+                                <div class="l-meta-block">
+                                    <span class="meta-rating rated-PG">PG</span>
+
+
+
+                                    <span class="meta-runtime"><a class="runtime">97 min</a></span>
+                                    <span class="meta-genre genre-holder">
+								
+			            		
+				            		<a class="genre">Animation</a>
+			            		
+				            		<a class="genre"> Action</a>
+			            		
+				            		<a class="genre"> Comedy</a>
+			            		
+				            		<a class="genre"> Family</a>
+			            		
+							</span>
+                                </div>
+                            </div>
+                            <div class="c-metadata__body">
+                                <h4 class="c-label">Director</h4>
+                                <div class="c-holder">
+
+
+
+                                    <a class="director">Clay Kaytis</a><i class="sep"> • </i>
+
+                                    <a class="director"> Fergal Reilly</a>
+
+
+                                </div>
+                                <h4 class="c-label">Writer</h4>
+                                <div class="c-holder">
+
+
+
+                                    <a class="writer">Jon Vitti</a>
+
+
+                                </div>
+                                <h4 class="c-label">Cast</h4>
+                                <div class="c-holder">
+
+
+                                    <a class="genre-tag">Peter Dinklage</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Jason Sudeikis</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Maya Rudolph</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Josh Gad</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Danny McBride</a>
+
+                                </div>
+                                <div class="c-holder row-4">An island populated entirely by happy, flightless birds or almost entirely. In this paradise, Red, a bird with a temper problem, speedy Chuck, and the volatile Bomb have always been outsiders. But when the island is visited
+                                    by mysterious green piggies, it’s up to these unlikely outcasts to figure out what the pigs are up to.</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="c-card c-card-movie">
+                    <div class="c-card__body">
+                        <img src="/images/movie/poster/poster-x-men-apocalypse.jpg" alt="movie-art" class="c-card-poster l-dv--trigger">
+                        <div class="c-card c-card-metadata">
+                            <div class="c-metadata__header">
+                                <h1 class="c-title l-dv--trigger">X-Men: Apocalypse</h1>
+                                <div class="l-meta-block">
+                                    <span class="meta-rating rated-PG-13">PG-13</span>
+
+
+
+                                    <span class="meta-runtime"><a class="runtime">144 min</a></span>
+                                    <span class="meta-genre genre-holder">
+								
+			            		
+				            		<a class="genre">Action</a>
+			            		
+				            		<a class="genre"> Adventure</a>
+			            		
+				            		<a class="genre"> Sci-Fi</a>
+			            		
+							</span>
+                                </div>
+                            </div>
+                            <div class="c-metadata__body">
+                                <h4 class="c-label">Director</h4>
+                                <div class="c-holder">
+
+
+
+                                    <a class="director">Bryan Singer</a>
+
+
+                                </div>
+                                <h4 class="c-label">Writer</h4>
+                                <div class="c-holder">
+
+
+
+                                    <a class="writer">Michael Dougherty</a><i class="sep"> • </i>
+
+                                    <a class="writer"> Dan Harris</a><i class="sep"> • </i>
+
+                                    <a class="writer"> Simon Kinberg</a>
+
+
+                                </div>
+                                <h4 class="c-label">Cast</h4>
+                                <div class="c-holder">
+
+
+                                    <a class="genre-tag">James McAvoy</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Jennifer Lawrence</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Michael Fassbender</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Oscar Isaac</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Nicholas Hoult</a>
+
+                                </div>
+                                <div class="c-holder row-4">Since the dawn of civilization, he was worshipped as a god. Apocalypse, the first and most powerful mutant from Marvel’s X-Men universe, amassed the powers of many other mutants, becoming immortal and invincible. Upon awakening
+                                    after thousands of years, he is disillusioned with the world as he finds it and recruits a team of powerful mutants, including a disheartened Magneto, to cleanse mankind and create a new world order, over which he will
+                                    reign. As the fate of the Earth hangs in the balance,...</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="c-card c-card-movie">
+                    <div class="c-card__body">
+                        <img src="/images/movie/poster/poster-kung-fu-panda-3.jpg" alt="movie-art" class="c-card-poster l-dv--trigger">
+                        <div class="c-card c-card-metadata">
+                            <div class="c-metadata__header">
+                                <h1 class="c-title l-dv--trigger">Kung Fu Panda 3</h1>
+                                <div class="l-meta-block">
+                                    <span class="meta-rating rated-PG">PG</span>
+
+
+
+                                    <span class="meta-runtime"><a class="runtime">95 min</a></span>
+                                    <span class="meta-genre genre-holder">
+								
+			            		
+				            		<a class="genre">Animation</a>
+			            		
+				            		<a class="genre"> Action</a>
+			            		
+				            		<a class="genre"> Comedy</a>
+			            		
+				            		<a class="genre"> Adventure</a>
+			            		
+							</span>
+                                </div>
+                            </div>
+                            <div class="c-metadata__body">
+                                <h4 class="c-label">Director</h4>
+                                <div class="c-holder">
+
+
+
+                                    <a class="director">Jennifer Yuh</a><i class="sep"> • </i>
+
+                                    <a class="director"> Alessandro Carloni</a>
+
+
+                                </div>
+                                <h4 class="c-label">Writer</h4>
+                                <div class="c-holder">
+
+
+
+                                    <a class="writer">Jonathan Aibel</a><i class="sep"> • </i>
+
+                                    <a class="writer"> Glenn Berger</a>
+
+
+                                </div>
+                                <h4 class="c-label">Cast</h4>
+                                <div class="c-holder">
+
+
+                                    <a class="genre-tag">Jack Black</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Bryan Cranston</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Dustin Hoffman</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> Angelina Jolie</a><i class="sep"> • </i>
+
+                                    <a class="genre-tag"> David Cross</a>
+
+                                </div>
+                                <div class="c-holder row-4">When Po&#39;s long-lost panda father suddenly reappears, the reunited duo travels to a secret panda paradise to meet scores of hilarious new panda characters. But when the supernatural villain Kai begins to sweep across
+                                    China defeating all the kung fu masters, Po must do the impossible-learn to train a village full of his fun-loving, clumsy brethren to become the ultimate band of Kung Fu Pandas.</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+
+            <nav class="glob-nav nav-dots">
+
+                <li class="dot">1</li>
+
+                <li class="dot">2</li>
+
+                <li class="dot">3</li>
+
+                <li class="dot">4</li>
+
+                <li class="dot">5</li>
+
+                <li class="dot">6</li>
+
+            </nav>
+            <nav class="glob-nav nav-arrows">
+                <i class="arrow arrow-up">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+		</i>
+                <i class="arrow arrow-down">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>
+		</i>
+            </nav>
+
+            <div class="l-dv-underlay"></div>
+
+            <section class="l-dv">
+                <div class="l-dv-inner">
+                    <aside class="l-dv-sidebar l-dv-sidebar__L">
+                        <nav class="actions">
+                            <ul>
+                                <li data-icon=""><a href="#">Watch Trailer</a></li>
+                                <li data-icon=""><a href="#">Seen This Movie?</a></li>
+                                <li data-icon=""><a href="#">Like It</a></li>
+                                <li data-icon=""><a href="#">Write A Review</a></li>
+                                <li data-icon=""><a href="#">Add To Watchlist</a></li>
+                                <li data-icon=""><a href="#">Share</a></li>
+                            </ul>
+                        </nav>
+                    </aside>
+
+                    <section class="l-dv-content">
+                        <div class="l-dv-content__header">
+                            <h1 class="header-title"><span class="title"></span><span class="subtitle"></span><span class="release-year"></span></h1>
+                            <div class="l-meta-block">
+                                <div class="l-meta-block__inner">
+                                    <span class="meta-rating"></span>
+                                    <span class="meta-runtime"></span>
+                                    <span class="meta-genre genre-holder"></span>
+                                    <ul class="meta-stars" data-rating="">
+
+                                        <li class="star"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/></svg></li>
+
+                                        <li class="star"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/></svg></li>
+
+                                        <li class="star"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/></svg></li>
+
+                                        <li class="star"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/></svg></li>
+
+                                        <li class="star"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/></svg></li>
+
+                                        <li class="star"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/></svg></li>
+
+                                        <li class="star"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/></svg></li>
+
+                                        <li class="star"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/></svg></li>
+
+                                        <li class="star"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/></svg></li>
+
+                                        <li class="star"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/></svg></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="l-meta-block abs-float--right">
+                                <div class="l-meta-block__sub meta-director">
+                                    <h3>Director</h3>
+                                    <div class="director-holder"></div>
+                                </div>
+                                <div class="l-meta-block__sub meta-writers">
+                                    <h3>Writers</h3>
+                                    <div class="writers-holder"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="l-dv-content__body">
+                            <div class="c-card">
+                                <div class="c-card__header">
+                                    <h3>Storyline</h3></div>
+                                <div class="c-card__body storyline-holder"></div>
+                            </div>
+                            <div class="c-card">
+                                <div class="c-card__header">
+                                    <h3>Cast</h3></div>
+                                <div class="c-card__body cast-holder"></div>
+                            </div>
+                            <div class="c-card soundtrack-holder">
+                                <div class="c-card__header">
+                                    <h3>Music featured in <span></span></h3></div>
+                                <div class="c-card__body">
+
+                                    <li class="track">
+                                        <span class="track__no">1</span>
+                                        <span class="track__info">
+			            			<a class="title">Submission</a>
+			            			<a class="artist">Tyler Bates <span class="ost-id">Captain America: Civil War OST</span></a>
+                                        </span>
+                                        <span class="track__runtime">0:00</span>
+                                    </li>
+
+                                    <li class="track">
+                                        <span class="track__no">2</span>
+                                        <span class="track__info">
+			            			<a class="title">Submission</a>
+			            			<a class="artist">Tyler Bates <span class="ost-id">Captain America: Civil War OST</span></a>
+                                        </span>
+                                        <span class="track__runtime">0:00</span>
+                                    </li>
+
+                                    <li class="track">
+                                        <span class="track__no">3</span>
+                                        <span class="track__info">
+			            			<a class="title">Submission</a>
+			            			<a class="artist">Tyler Bates <span class="ost-id">Captain America: Civil War OST</span></a>
+                                        </span>
+                                        <span class="track__runtime">0:00</span>
+                                    </li>
+
+                                    <li class="track">
+                                        <span class="track__no">4</span>
+                                        <span class="track__info">
+			            			<a class="title">Submission</a>
+			            			<a class="artist">Tyler Bates <span class="ost-id">Captain America: Civil War OST</span></a>
+                                        </span>
+                                        <span class="track__runtime">0:00</span>
+                                    </li>
+
+                                    <li class="track">
+                                        <span class="track__no">5</span>
+                                        <span class="track__info">
+			            			<a class="title">Submission</a>
+			            			<a class="artist">Tyler Bates <span class="ost-id">Captain America: Civil War OST</span></a>
+                                        </span>
+                                        <span class="track__runtime">0:00</span>
+                                    </li>
+
+                                    <li class="track">
+                                        <span class="track__no">6</span>
+                                        <span class="track__info">
+			            			<a class="title">Submission</a>
+			            			<a class="artist">Tyler Bates <span class="ost-id">Captain America: Civil War OST</span></a>
+                                        </span>
+                                        <span class="track__runtime">0:00</span>
+                                    </li>
+
+                                    <li class="track">
+                                        <span class="track__no">7</span>
+                                        <span class="track__info">
+			            			<a class="title">Submission</a>
+			            			<a class="artist">Tyler Bates <span class="ost-id">Captain America: Civil War OST</span></a>
+                                        </span>
+                                        <span class="track__runtime">0:00</span>
+                                    </li>
+
+                                    <li class="track">
+                                        <span class="track__no">8</span>
+                                        <span class="track__info">
+			            			<a class="title">Submission</a>
+			            			<a class="artist">Tyler Bates <span class="ost-id">Captain America: Civil War OST</span></a>
+                                        </span>
+                                        <span class="track__runtime">0:00</span>
+                                    </li>
+
+                                    <li class="track">
+                                        <span class="track__no">9</span>
+                                        <span class="track__info">
+			            			<a class="title">Submission</a>
+			            			<a class="artist">Tyler Bates <span class="ost-id">Captain America: Civil War OST</span></a>
+                                        </span>
+                                        <span class="track__runtime">0:00</span>
+                                    </li>
+
+                                    <li class="track">
+                                        <span class="track__no">10</span>
+                                        <span class="track__info">
+			            			<a class="title">Submission</a>
+			            			<a class="artist">Tyler Bates <span class="ost-id">Captain America: Civil War OST</span></a>
+                                        </span>
+                                        <span class="track__runtime">0:00</span>
+                                    </li>
+
+                                </div>
+                            </div>
+                            <div class="c-card">
+                                <div class="c-card__header">
+                                    <h3>Reviews</h3></div>
+                                <div class="c-card__body reviews-holder"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <aside class="l-dv-sidebar l-dv-sidebar__R">
+
+                        <div class="c-card c-card-media"></div>
+
+                        <div class="c-card c-card-media"></div>
+
+                        <div class="c-card c-card-media"></div>
+
+                        <div class="c-card c-card-media"></div>
+
+                        <div class="c-card c-card-media"></div>
+
+                        <div class="c-card c-card-media"></div>
+
+                    </aside>
+
+                    <div class="media-player-holder">
+                        <span class="media-player">
+					<i class="bttn-close">Close</i>
+				</span>
+                        <div class="l-media-drawer">
+                            <span class="c-drawer__item"></span>
+                            <span class="c-drawer__item"></span>
+                            <span class="c-drawer__item"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </app-content>
+
+    <!-- build:js /js/muvizone-app.js async-->
+    <script defer src="/js/app-core.js"></script>
+    <script defer src="/js/app-drawer.js"></script>
+    <script defer src="/js/app-custom.js"></script>
+    <script defer src="/js/concepts/muvizone/navigator.js"></script>
+    <script defer src="/js/concepts/muvizone/view.js"></script>
+    <script defer src="/js/concepts/muvizone/star-rating.js"></script>
+    <script defer src="/js/concepts/muvizone/fetch.js"></script>
+    <script defer src="/js/concepts/muvizone/player.js"></script>
+    <!-- endbuild -->
+
+
+    <!-- <script src="/js/utils/sw-toolbox/companion.js" data-service-worker="/service-worker.js"></script> -->
+
+
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-XXXXX-X', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</body>
+
+</html>
